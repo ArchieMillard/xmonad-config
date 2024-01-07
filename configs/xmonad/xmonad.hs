@@ -1,8 +1,8 @@
 -- Archie Millard
 -- https://www.github.com/ArchieMillard
 -- This is my Xmonad config file.
--- It can be found in my git repo at https://github.com/ArchieMillard/xmonad-config
--- You can also use my autorice script found at https://github.com/ArchieMillard/autorice to deploy this config automatically on Gentoo or any Arch-based distro.
+-- It can be found in my git repo at 'https://github.com/ArchieMillard/xmonad-config'.
+-- You can also use my autorice script found at 'https://github.com/ArchieMillard/rice' to deploy this config automatically on Gentoo or any Arch-based distro.
 
 -- Imports
 --
