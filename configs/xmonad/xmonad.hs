@@ -138,11 +138,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Launch htop through st
     , ((modm .|. shiftMask, xK_m     ), spawn "st htop")
     
-    -- Launch lf through st
-    , ((modm .|. shiftMask, xK_f     ), spawn "st lf")
+    -- Launch pcmanfm file manager
+    , ((modm .|. shiftMask, xK_f     ), spawn "pcmanfm")
     
-    --Launch neovim through st
-    , ((modm .|. shiftMask, xK_t     ), spawn "st nvim")
+    --Launch vim through st
+    , ((modm .|. shiftMask, xK_t     ), spawn "st vim")
     
     -- Set volume down by 2%
     , ((modm .|. shiftMask, xK_v     ), spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-")
@@ -159,6 +159,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
      -- Set brightness up by 10% with brightnessctl
      , ((modm,               xK_b     ), spawn "doas brightnessctl set 10%+")
     
+    -- Use Flameshot to take a screenshot
+     , ((modm .|. shiftMask, xK_s     ), spawn "flameshot gui")
+
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
     ]
@@ -244,6 +247,7 @@ myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
+    , className =? "libreoffice"    --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
