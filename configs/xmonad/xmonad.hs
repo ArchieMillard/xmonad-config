@@ -161,6 +161,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     
     -- Use Flameshot to take a screenshot
      , ((modm .|. shiftMask, xK_s     ), spawn "flameshot gui")
+    
+    -- Enable redshift
+     , ((modm,               xK_r     ), spawn " exec /home/archie/.scripts/redshiftenable.sh")
+
+    -- Disable redshift
+     , ((modm .|. shiftMask, xK_r     ), spawn "exec /home/archie/.scripts/redshiftdisable.sh")
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
@@ -282,6 +288,11 @@ myStartupHook = do
         spawnOnce "~/.fehbg &"
         spawnOnce "xmobar /home/archie/.config/xmobar/xmobarrc &"
         spawnOnce "exec lxsession &"
+-- To start Pipewire on Gentoo (OpenRC). Comment out if unneeded.
+-- This option is working on my current setup.
+--	spawnOnce "exec gentoo-pipewire-launcher"
+-- This option is not working on my current setup, but may occasionally be needed.
+--	spawnOnce "wireplumber"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
