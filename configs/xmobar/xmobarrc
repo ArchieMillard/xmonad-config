@@ -6,7 +6,7 @@
 Config { 
 
    -- appearance
-     font =         "Bitstream Vera Sans Mono 9"
+     font =         "Terminus 9"
    , bgColor =      "#000000"
    , fgColor =      "#FFFFFF"
    , position =     Top
