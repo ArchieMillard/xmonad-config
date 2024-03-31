@@ -2,9 +2,9 @@
 -- https://www.github.com/ArchieMillard
 -- This is my Xmonad config file.
 -- It can be found in my 'xmonad-config' git repo at 'https://github.com/ArchieMillard/xmonad-config' or in my 'dotfiles' git repo at 'https://github.com/ArchieMillard/dotfiles'.
---
--- Imports
---
+---------------------------------------
+-- IMPORTS
+---------------------------------------
 import XMonad
 import Data.Monoid
 import System.Exit
@@ -55,10 +55,12 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#363636"
-myFocusedBorderColor = "#FFFFFF"
+myFocusedBorderColor = "#ffffff"
 
-------------------------------------------------------------------------
--- Key bindings. Add, modify or remove key bindings here.
+---------------------------------------
+-- KEY BINDINGS 
+---------------------------------------
+-- Add, modify or remove key bindings here.
 --
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
@@ -123,7 +125,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
     --
-    -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
+    , ((modm              , xK_x     ), sendMessage ToggleStruts)
 
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
@@ -190,9 +192,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
-------------------------------------------------------------------------
--- Mouse bindings: default actions bound to mouse events
---
+---------------------------------------
+-- MOUSE BINDINGS
+---------------------------------------
+ -- Default actions bound to mouse events.
+ --
 myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- mod-button1, Set the window to floating mode and move by dragging
@@ -209,9 +213,9 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
     -- you may also bind events to the mouse scroll wheel (button4 and button5)
     ]
 
-------------------------------------------------------------------------
--- Layouts:
-
+---------------------------------------
+-- LAYOUTS
+---------------------------------------
 -- You can specify and transform your layouts by modifying these values.
 -- If you change layout bindings be sure to use 'mod-shift-space' after
 -- restarting (with 'mod-q') to reset your layout state to the new
@@ -234,9 +238,9 @@ myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
      -- Percent of screen to increment by when resizing panes
      delta   = 3/100
 
-------------------------------------------------------------------------
--- Window rules:
-
+---------------------------------------
+-- WINDOW RULES
+---------------------------------------
 -- Execute arbitrary actions and WindowSet manipulations when managing
 -- a new window. You can use this to, for example, always float a
 -- particular program, or have a client always appear on a particular
@@ -256,9 +260,9 @@ myManageHook = composeAll
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
-------------------------------------------------------------------------
--- Event handling
-
+---------------------------------------
+-- EVENT HANDLING
+---------------------------------------
 -- * EwmhDesktops users should change this to ewmhDesktopsEventHook
 --
 -- Defines a custom handler function for X Events. The function should
@@ -267,20 +271,21 @@ myManageHook = composeAll
 --
 myEventHook = mempty
 
-------------------------------------------------------------------------
--- Status bars and logging
-
+---------------------------------------
+-- STATUS BARS AND LOGGING
+---------------------------------------
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
 myLogHook = return ()
 
-------------------------------------------------------------------------
--- Startup hook
-
+---------------------------------------
+-- STARTUP HOOK
+---------------------------------------
 -- Perform an arbitrary action each time xmonad starts or is restarted
 -- with mod-q.  Used by, e.g., XMonad.Layout.PerWorkspace to initialize
 -- per-workspace layout choices.
+--
 myStartupHook = do
         spawnOnce "setxkbmap gb"
         spawnOnce "xmobar /home/archie/.config/xmobar/xmobarrc &"
@@ -295,7 +300,7 @@ myStartupHook = do
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
-
+--
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = xmonad defaults
